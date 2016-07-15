@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>h5+css+js计算器_demo</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+            box-sizing: border-box;
+            font:normal 27px sans-serif;
+            list-style-type: none;
+        }
+        html{
+            height: 100%;
+            background: white;
+            background: radial-gradient(circle,#fff 20%,#ccc);
+            background-size: cover;
+        }
+        .calculator_id{
+            width: 291px;
+            height: 405px;
+            margin: 100px auto;
+            /*border: 1px solid #818189;*/
+        }
+        .top,.screen{
+            width: 291px;
+            height: 101px;
+            border-bottom: 1px solid #cccccc;
+            background: #999;
+            text-align: right;
+            letter-spacing: 1px;
+            overflow: hidden;
+            /*border: 1px solid #818181;*/
+        }
+        .screen{
+            padding-top: 40px;
+            font-size: 60px;
+            position: relative;
+            z-index: 30;
+        }
+        .keys{
+            height: 304px;
+            background: #d6d6d6;
+            font-size: 20px;
+            position: relative;
+        }
+        .k3,.k4{
+            position: relative;
+            display: block;
+            float: left;
+            width: 291px;
+            height: 60px;
+            margin: 0;
+            text-align: center;
+            border-bottom: 2px solid #aeaeae;
+            z-index: 10;
+            
+        }
+         .k2{
+             position: relative;
+             display: block;
+             float: left;
+             width: 291px;
+             height: 64px;
+             margin: 0;
+             text-align: center;
+             border-bottom: 2px solid #aeaeae;
+             z-index: 10;
+         }
+        .k1{
+            position: relative;
+            display: block;
+            float: left;
+            width: 291px;
+            height: 60px;
+            margin: 0;
+            text-align: center;
+            /*border-bottom: 1px solid #aeaeae;*/
+            z-index: 10;
+
+        }
+        .k1 div,.k2 div,.k3 div,.k4 div,.k5 div{
+            float: left;
+        }
+        .calculator_id span{
+            margin: 0;
+            position:relative;
+            z-index: 99;
+            cursor: pointer;
+            padding-top: 20px;
+            padding-left:20px ;
+            padding-right: 23px;
+            padding-bottom: 16px;
+        }
+        .k2{
+          border-top: 2px solid #aeaeae;
+        }
+        #line1{
+            margin-left: 0px;
+            height: 242px;
+            border: 1px solid #aeaeae;
+        }
+        #line2{
+            margin-left: 0px;
+            height: 304px;
+            border: 1px solid #aeaeae;
+        }
+        #line3{
+            background: #f69330;
+            position: absolute;
+            width: 75px;
+            left: 215px;
+            height: 303px;
+            border-left: 2px solid #aeaeae;
+        }
+        .clear_id{
+            margin-top:15px;
+            margin-left: 0px;
+            text-align: center;
+        }
+        .addminus_id{
+            position: relative;
+            margin-top:15px;
+            margin-left: 0px;
+
+        }
+
+        .percent{
+            margin-top:15px;
+            margin-left:0px;
+            text-align: center;
+        }
+        #divide{
+            position: absolute;
+            color: #fff;
+            top:15px;
+            left: 215px;
+            text-align: center;
+            z-index: 10;
+        }
+        #n7{
+            margin-top:15px;
+            margin-left: 0px;
+            text-align: center
+        }
+        #n7 span,#n4 span,#n1 span,#zero span{
+            padding-top: 18px;
+            padding-left: 25px;
+            padding-right: 34px;
+        }
+        #zero span{
+            padding-top: 20px;
+            padding-bottom: 14px;
+        }
+        #n8{
+            margin-top:15px;
+            margin-left: 0px;
+            text-align: center;
+        }
+        #n8 span,#n5 span,#n2 span{
+            padding-top: 18px;
+            padding-left: 25px;
+            padding-right: 34px;
+        }
+        #n9{
+            margin-top:15px;
+            margin-left: 0px;
+            text-align: center;
+        }
+        #n9 span ,#n6 span,#n3 span{
+            padding-top: 18px;
+            padding-left: 25px;
+            padding-right: 34px;
+        }
+        #decimal span{
+            padding-top: 14px;
+            padding-left: 28px;
+            padding-right: 27px;
+            padding-bottom: 20px;
+         }
+        #multiply span{
+            padding-top: 16px;
+            padding-left: 26px;
+            padding-right: 29px;
+
+         }
+        #minus span,#add span{
+            padding-top: 16px;
+            padding-left: 26px;
+            padding-right: 29px;
+            padding-bottom: 14px;
+
+        }
+        #divide span{
+            padding-top: 16px;
+            padding-left:25px ;
+            padding-right: 20px;
+            padding-bottom: 14px;
+        }
+
+        #equal span{
+            padding-top: 18px;
+            padding-left: 28px;
+            padding-right:30px ;
+            padding-bottom: 13px;
+        }
+
+        #multiply{
+            color: #fff;
+            margin-top:15px;
+            margin-left: 0px;
+            text-align: center;
+        }
+        #n4{
+            margin-top:15px;
+            margin-left: 0px;
+            text-align: center;
+        }
+        #n5{
+            margin-top:15px;
+            margin-left: 0px;
+            text-align: center;
+        }
+        #n6{
+            margin-top:15px;
+            margin-left: 0px;
+            text-align: center;
+        }
+        #minus{
+            color: #fff;
+            margin-top:15px;
+            margin-left: 0px;
+            text-align: center;
+        }
+
+        #n1{
+            margin-top:15px;
+            margin-left: 0px;
+            text-align: center;
+        }
+        #n2{
+            margin-top:15px;
+            margin-left: 0px;
+            text-align: center;
+        }
+        #n3{
+            margin-top:15px;
+            margin-left: 0px;
+            text-align: center;
+        }
+        #add{
+            color: #fff;
+            margin-top:15px;
+            margin-left:0px;
+            text-align: center;
+        }
+        #zero{
+            margin-top:18px;
+            margin-left: 0px;
+            text-align: center;
+        }
+
+        #decimal{
+            margin-top:10px;
+            margin-left: 74px;
+            text-align: center;
+        }
+
+        #equal{
+            position: absolute;
+            color: #fff;
+            top:260px;
+            left: 215px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .addminus_id span{
+            padding-left:15px ;
+            padding-right: 17px;
+
+
+        }
+        .percent span{
+            padding-left:26px ;
+            padding-right: 29px;
+        }
+
+        #clear span:hover,#addminus span:hover,#percent span:hover,#n7 span:hover,#n7 span:hover,#n7 span:hover,
+        #n8 span:hover,#n9 span:hover,#n4 span:hover,#n5 span:hover,#n6 span:hover,#n1 span:hover,#n2 span:hover,
+        #n3 span:hover,#zero span:hover,#decimal span:hover{
+            opacity: .6;
+            background: #aeaeae;
+        }
+        #divide span:hover,#multiply span:hover,#minus span:hover,#add span:hover,#equal span:hover{
+          border: 2px solid black;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="calculator" class="calculator_id">
+    <!--<canvas id="calculator_canvas" width="800" height="450"></canvas>-->
+    <div class="top">
+        <div class="screen">0</div>
+    </div>
+    <div class="keys" id="keys">
+        <div class="k1">
+            <div id="clear" class="clear_id"><span>AC</span></div>
+            <div id="line1"></div>
+            <div id="addminus" class="addminus_id"><span>+/-</span></div>
+            <div id="line2"></div>
+            <div id="percent" class="percent"><span>%</span></div>
+            <div id="line3"></div>
+            <div id="divide" class="divide_id"><span>÷</span></div>
+        </div>
+        <div class="k2">
+            <div class="n7" id="n7"><span>7</span></div>
+            <div class="n8" id="n8"><span>8</span></div>
+            <div class="n9" id="n9"><span>9</span></div>
+            <div id="multiply" class="multiply"><span>x</span></div>
+        </div>
+        <div class="k3">
+            <div class="n4" id="n4"><span>4</span></div>
+            <div class="n5" id="n5"><span>5</span></div>
+            <div class="n6" id="n6"><span>6</span></div>
+            <div id="minus" class="minus"><span>-</span></div>
+        </div>
+        <div class="k4">
+            <div class="n1"  id="n1"><span>1</span></div>
+            <div class="n2" id="n2"><span>2</span></div>
+            <div class="n3" id="n3"><span>3</span></div>
+            <div id="add" class="add_id"><span>+</span></div>
+        </div>
+        <div class="k5">
+            <div class="zero" id="zero"><span>0</span></div>
+            <div id="decimal" class="decimal"><span>.</span></div>
+            <div id="equal" class="equal"><span>=</span></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var keys = document.querySelectorAll('#calculator span');
+    var operators = ['+', '-', 'x', '÷'];
+    var decimalAdded = false;
+    for(var i = 0; i < 20; i++) {
+        keys[i].onclick = function(e) {
+            var input = document.querySelector('.screen');
+            var inputVal = input.innerHTML;
+            var btnVal = this.innerHTML;
+
+            if(btnVal == 'AC') {
+                input.innerHTML = '';
+                decimalAdded = false;
+            }
+            else if(btnVal == '=') {
+                var equation = inputVal;
+                var lastChar = equation[equation.length - 1];
+                equation = equation.replace(/x/g, '*').replace(/÷/g, '/');
+                if(operators.indexOf(lastChar) > -1 || lastChar == '.')
+                { equation = equation.replace(/.$/, '');}
+
+                if(equation)
+                {input.innerHTML = eval(equation);}
+
+                decimalAdded = false;
+            }
+
+            else if(operators.indexOf(btnVal) > -1) {
+                var lastChar = inputVal[inputVal.length - 1];
+                if(inputVal != '' && operators.indexOf(lastChar) == -1)
+                    input.innerHTML += btnVal;
+                else if(inputVal == '' && btnVal == '-')
+                    input.innerHTML += btnVal;
+                if(operators.indexOf(lastChar) > -1 && inputVal.length > 1) {
+                    input.innerHTML = inputVal.replace(/.$/, btnVal);
+                }
+
+                decimalAdded =false;
+            }
+
+            else if(btnVal == '.') {
+                if(!decimalAdded) {
+                    input.innerHTML += btnVal;
+                    decimalAdded = true;
+                }
+            }
+
+            else {
+                input.innerHTML += btnVal;
+            }
+            e.preventDefault();
+        }
+    }
+
+</script>
+</body>
+</html>
